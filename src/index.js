@@ -6,7 +6,8 @@ process.env.__dirname = 'foo'
 export default {
 	async fetch(request, env, ctx) {
 
-		const playwright = await import("playwright-core");
+		// const playwright = await import("playwright-core");
+		const playwright = require('playwright-core');
 
 		console.log(Object.keys(playwright))
 
