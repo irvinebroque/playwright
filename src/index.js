@@ -1,15 +1,28 @@
-/**
- * Welcome to Cloudflare Workers! This is your first worker.
- *
- * - Run `npm run dev` in your terminal to start a development server
- * - Open a browser tab at http://localhost:8787/ to see your worker in action
- * - Run `npm run deploy` to publish your worker
- *
- * Learn more at https://developers.cloudflare.com/workers/
- */
+global.__dirname = 'foo';
+__dirname = 'foo'
+globalThis.__dirname = 'foo'
+process.env.__dirname = 'foo'
 
 export default {
 	async fetch(request, env, ctx) {
+
+		const playwright = await import("playwright-core");
+
+		console.log(Object.keys(playwright))
+
+		const browser = await playwright.chromium.connectOverCDP(
+			`wss://connect.browserbase.com?apiKey=KEY`
+		  );
+		
+		  // Getting the default context to ensure the sessions are recorded.
+		  const defaultContext = browser.contexts()[0];
+		  const page = defaultContext.pages()[0];
+		
+		  await page.goto("https://browserbase.com/");
+		  await page.close();
+		  await browser.close();
+
+
 		return new Response('Hello World!');
 	},
 };
