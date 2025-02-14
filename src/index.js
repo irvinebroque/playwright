@@ -1,8 +1,3 @@
-global.__dirname = 'foo';
-__dirname = 'foo'
-globalThis.__dirname = 'foo'
-process.env.__dirname = 'foo'
-
 export default {
 	async fetch(request, env, ctx) {
 

@@ -11,8 +11,5 @@
   "alias": {
     "chromium-bidi/lib/cjs/cdp/CdpConnection": "./some-file.js",
     "chromium-bidi/lib/cjs/bidiMapper/BidiMapper": "./some-file.js"
-  },
-  "vars": {
-    "__dirname": "foo"
   }
 }
